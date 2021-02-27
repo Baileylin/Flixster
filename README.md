@@ -21,6 +21,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 
 <img src="./walkthrough/Walkthrough.gif" width=250><br>
+<img src="./walkthrough/Walkthrough2.gif" width=250><br>
 
 ### Notes
 One challenge is to use the design format of xml file. It definitely provides a lot of convenience, but sometimes understanding what's behind the options for a component could be confusing. 
