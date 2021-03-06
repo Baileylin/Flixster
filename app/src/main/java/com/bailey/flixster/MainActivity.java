@@ -22,13 +22,15 @@ import java.util.List;
 
 import okhttp3.Headers;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     public static final String NOW_PLAYING_URL="https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     public static final String TAG="MainActivity";
     List<Movie> movies;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView rvMovies=findViewById(R.id.rvMovies);
@@ -37,22 +39,28 @@ public class MainActivity extends AppCompatActivity {
         rvMovies.setAdapter(movieAdapter);
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
         AsyncHttpClient client=new AsyncHttpClient();
-        client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
+        client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler()
+        {
             @Override
-            public void onSuccess(int i, Headers headers, JSON json) {
+            public void onSuccess(int i, Headers headers, JSON json)
+            {
                 Log.d(TAG,"On Success");
                 JSONObject jsonObject=json.jsonObject;
-                try {
+                try
+                {
                     JSONArray results=jsonObject.getJSONArray("results");
                     movies.addAll(Movie.fromJsonArray(results));
                     movieAdapter.notifyDataSetChanged();
-                } catch (JSONException e) {
+                }
+                catch (JSONException e)
+                {
                     Log.e(TAG,"Hit Json Exception",e);
                 }
             }
 
             @Override
-            public void onFailure(int i, Headers headers, String s, Throwable throwable) {
+            public void onFailure(int i, Headers headers, String s, Throwable throwable)
+            {
                 Log.d(TAG,"on Failure");
             }
         });
